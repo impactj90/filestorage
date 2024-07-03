@@ -1,7 +1,18 @@
 package main
 
-import "fmt"
+import (
+	"log"
+
+	"github.com/impactj90/filestorage/p2p"
+)
 
 func main() {
-	fmt.Println("We gucci!")
+	tr := p2p.NewTCPTransport(":3000")
+
+	if err := tr.ListenAndAccept(); err != nil {
+		log.Fatal(err)
+	}
+
+	select {}
+
 }
